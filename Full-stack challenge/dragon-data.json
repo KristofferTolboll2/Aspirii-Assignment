@@ -1,0 +1,121 @@
+[
+  {
+    "name": "Adult Black Dragon",
+    "hitpoints": 195,
+    "speed": {
+      "walk": 40,
+      "fly": 80,
+      "swim": 40
+    },
+    "strength": 23,
+    "dexterity": 14,
+    "constitution": 21,
+    "intelligence": 14,
+    "wisdom": 13,
+    "charisma": 17,
+    "xp": 11500,
+    "attack": "2d10+6"
+  },
+  {
+    "name": "Adult Blue Dragon",
+    "hitpoints": 225,
+    "speed": {
+      "walk": 40,
+      "burrow": 30,
+      "fly": 80
+    },
+    "strength": 25,
+    "dexterity": 10,
+    "constitution": 23,
+    "intelligence": 16,
+    "wisdom": 15,
+    "charisma": 19,
+    "xp": 15000,
+    "attack": "2d10+7"
+  },
+  {
+    "name": "Adult Brass Dragon",
+    "hitpoints": 172,
+    "speed": {
+      "walk": 40,
+      "burrow": 40,
+      "fly": 80
+    },
+    "strength": 23,
+    "dexterity": 10,
+    "constitution": 21,
+    "intelligence": 14,
+    "wisdom": 13,
+    "charisma": 17,
+    "xp": 10000,
+    "attack": "2d10+6"
+  },
+  {
+    "name": "Adult Bronze Dragon",
+    "hitpoints": 212,
+    "speed": {
+      "walk": 40,
+      "fly": 80,
+      "swim": 40
+    },
+    "strength": 25,
+    "dexterity": 10,
+    "constitution": 23,
+    "intelligence": 16,
+    "wisdom": 15,
+    "charisma": 19,
+    "xp": 13000,
+    "attack": "2d10+7"
+  },
+  {
+    "name": "Adult Copper Dragon",
+    "hitpoints": 184,
+    "speed": {
+      "walk": 40,
+      "climb": 40,
+      "fly": 80
+    },
+    "strength": 23,
+    "dexterity": 12,
+    "constitution": 21,
+    "intelligence": 18,
+    "wisdom": 15,
+    "charisma": 17,
+    "xp": 11500,
+    "attack": "2d10+6"
+  },
+  {
+    "name": "Adult Gold Dragon",
+    "hitpoints": 256,
+    "speed": {
+      "walk": 30,
+      "fly": 80,
+      "swim": 40
+    },
+    "strength": 27,
+    "dexterity": 14,
+    "constitution": 25,
+    "intelligence": 16,
+    "wisdom": 15,
+    "charisma": 24,
+    "xp": 18000,
+    "attack": "2d10+8"
+  },
+  {
+    "name": "Adult Green Dragon",
+    "hitpoints": 207,
+    "speed": {
+      "walk": 40,
+      "fly": 80,
+      "swim": 40
+    },
+    "strength": 23,
+    "dexterity": 12,
+    "constitution": 21,
+    "intelligence": 18,
+    "wisdom": 15,
+    "charisma": 17,
+    "xp": 13000,
+    "attack": "2d10+6"
+  }
+]
