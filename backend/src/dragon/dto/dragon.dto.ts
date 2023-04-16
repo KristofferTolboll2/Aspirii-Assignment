@@ -31,8 +31,7 @@ export class GetDragonQueryParams {
   limit: number;
 
   @IsOptional()
-  @IsPositive()
-  @Type(() => Number)
+  @Type(() => Boolean)
   @Expose()
   @ApiProperty({
     description: 'Too include the speed attribute',

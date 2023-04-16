@@ -1,3 +1,4 @@
+import { UserController } from './user/user.controller';
 import { UserService } from './user/user.service';
 import { DragonModule } from './dragon/dragon.module';
 import { DragonService } from './dragon/dragon.service';
@@ -14,7 +15,7 @@ import { ConfigModule, ConfigService, registerAs } from '@nestjs/config';
       isGlobal: true,
     }),
   ],
-  controllers: [AppController],
+  controllers: [UserController, AppController],
   providers: [UserService, DragonService, AppService],
 })
 export class AppModule {}

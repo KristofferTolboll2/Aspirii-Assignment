@@ -10,6 +10,7 @@ describe('DragonService', () => {
       providers: [DragonService],
     }).compile();
     dragonService = module.get<DragonService>(DragonService);
+    await dragonService.reloadDragons();
   });
 
   it('should be defined', () => {
@@ -65,14 +66,14 @@ describe('DragonService', () => {
     dragons[0].speed.walk = 100;
     expect(dragonService.sameWalkSpeed()).toEqual(false);
   });
-  it('should return the attack damage of a dragon', () => {
+  it('should correctly calculate the attack damage of the dragon', () => {
     const dragon = dragonService.dragonsByHitpoints()[0];
-    expect(dragonService.attack(dragon)).toBeGreaterThan(0);
+    expect(dragonService.attack(dragon).total).toBeGreaterThan(0);
 
     const originalDragonHitpoints = dragon.hitpoints;
     const attackingDragon = dragonService.getArbitraryDragon([dragon]);
-    const damage = dragonService.attack(attackingDragon);
-    dragon.hitpoints -= damage;
+    const attackResponse = dragonService.attack(attackingDragon);
+    dragon.hitpoints -= attackResponse.total;
     expect(dragon.hitpoints).toBeLessThan(originalDragonHitpoints);
   });
   it('should return the winner of a battle', () => {
@@ -81,12 +82,31 @@ describe('DragonService', () => {
     expect(dragonService.battle(dragon1, dragon2)).toBeDefined();
 
     //Make sure that the dragon with the highest hitpoints wins
-    const winner = dragonService.battle(dragon1, dragon2);
+    const { winner } = dragonService.battle(dragon1, dragon2);
     if (winner === dragon1) {
       expect(dragon1.hitpoints).toBeGreaterThan(dragon2.hitpoints);
     }
     if (winner === dragon2) {
       expect(dragon2.hitpoints).toBeGreaterThan(dragon1.hitpoints);
+    }
+  });
+
+  it('should return of log of dice rolls from a battle', () => {
+    const dragon1 = dragonService.dragonsByHitpoints()[0];
+    const dragon2 = dragonService.dragonsByHitpoints()[1];
+    const dragon1InitialHitPoints = dragon1.hitpoints;
+    const dragon2InitialHitPoints = dragon2.hitpoints;
+    expect(dragonService.battle(dragon1, dragon2)).toBeDefined();
+    const { attacks, winner } = dragonService.battle(dragon1, dragon2);
+    expect(attacks).toBeDefined();
+    const totalDamage = attacks.reduce((totalDamge, attack) => {
+      return totalDamge + attack.damage;
+    }, 0);
+    if (winner === dragon1) {
+      expect(dragon2InitialHitPoints).toBeGreaterThanOrEqual(totalDamage);
+    }
+    if (winner === dragon2) {
+      expect(dragon1InitialHitPoints).toBeGreaterThanOrEqual(totalDamage);
     }
   });
 });

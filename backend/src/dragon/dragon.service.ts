@@ -157,8 +157,7 @@ export class DragonService {
    */
   battle(dragon1: Dragon, dragon2: Dragon) {
     const attacks = [];
-    console.log(dragon1);
-    console.log(dragon2);
+
     while (dragon1.hitpoints > 0 && dragon2.hitpoints > 0) {
       const diceResponse = this.attack(dragon2, true);
       dragon1.hitpoints -= diceResponse.total;
@@ -167,8 +166,6 @@ export class DragonService {
       const secondDiceResponse = this.attack(dragon1);
       dragon2.hitpoints -= secondDiceResponse.total;
       attacks.push(secondDiceResponse);
-      console.log(dragon2.hitpoints);
-      console.log(dragon1.hitpoints);
     }
     const winner = dragon1.hitpoints > 0 ? dragon1 : dragon2;
     return { winner, attacks };
