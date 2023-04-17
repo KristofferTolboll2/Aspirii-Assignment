@@ -1,3 +1,4 @@
+import { UserModule } from './user/user.module';
 import { UserController } from './user/user.controller';
 import { UserService } from './user/user.service';
 import { DragonModule } from './dragon/dragon.module';
@@ -10,6 +11,7 @@ import { ConfigModule, ConfigService, registerAs } from '@nestjs/config';
 
 @Module({
   imports: [
+    UserModule,
     DragonModule,
     ConfigModule.forRoot({
       isGlobal: true,
