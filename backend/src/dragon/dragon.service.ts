@@ -156,7 +156,11 @@ export class DragonService {
    * @returns the winning dragon of the battle
    */
   battle(dragon1: Dragon, dragon2: Dragon) {
-    const attacks = [];
+    const attacks: Array<{
+      diceRolls: number;
+      modifier: number;
+      total: number;
+    }> = [];
 
     while (dragon1.hitpoints > 0 && dragon2.hitpoints > 0) {
       const diceResponse = this.attack(dragon2, true);

@@ -91,22 +91,21 @@ describe('DragonService', () => {
     }
   });
 
-  it('should return of log of dice rolls from a battle', () => {
+  it('should return of log of dice rolls from a battle', async () => {
     const dragon1 = dragonService.dragonsByHitpoints()[0];
     const dragon2 = dragonService.dragonsByHitpoints()[1];
-    const dragon1InitialHitPoints = dragon1.hitpoints;
-    const dragon2InitialHitPoints = dragon2.hitpoints;
     expect(dragonService.battle(dragon1, dragon2)).toBeDefined();
+    //Reload the dragons to make sure that the hitpoints are reset.
+    await dragonService.reloadDragons();
     const { attacks, winner } = dragonService.battle(dragon1, dragon2);
     expect(attacks).toBeDefined();
-    const totalDamage = attacks.reduce((totalDamge, attack) => {
-      return totalDamge + attack.damage;
-    }, 0);
+
+    //Esnure that the losing dragon has 0 or less hitpoints after the battle.
     if (winner === dragon1) {
-      expect(dragon2InitialHitPoints).toBeGreaterThanOrEqual(totalDamage);
+      expect(dragon2.hitpoints).toBeLessThanOrEqual(0);
     }
     if (winner === dragon2) {
-      expect(dragon1InitialHitPoints).toBeGreaterThanOrEqual(totalDamage);
+      expect(dragon1.hitpoints).toBeLessThanOrEqual(0);
     }
   });
 });

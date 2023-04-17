@@ -46,7 +46,6 @@ export default function DragonBattleModal({
         dragon2: selectedDragons[1],
       }
     );
-    console.log(attackResponse);
     setIsLoading(false);
     if (attackResponse.data) {
       setResponse(attackResponse.data);

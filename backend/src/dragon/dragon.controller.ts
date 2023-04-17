@@ -29,7 +29,6 @@ export class DragonController {
   @ApiResponse({ status: 200, description: 'Return the winner' })
   battleDragons(@Body() { dragon1, dragon2 }: BattleDragonDto) {
     this.dragonService.reloadDragons();
-    console.log(this.dragonService.getDragons());
     return this.dragonService.battleDragons(dragon1, dragon2);
   }
 
